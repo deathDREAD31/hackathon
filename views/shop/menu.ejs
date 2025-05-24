@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campus Menu</title>
+  <link rel="stylesheet" href="/css/menu.css" />
+</head>
+<body>
+  <header>
+    <h1>Campus Menu</h1>
+    <a class="back-btn" href="/dashboard">← Back to Dashboard</a>
+  </header>
+
+  <main>
+    <% if (items.length === 0) { %>
+      <p class="empty">No items are available at the moment. Please check back later.</p>
+    <% } else { %>
+      <div class="menu-grid">
+        <% items.forEach(item => { %>
+          <div class="menu-card">
+            <% if (item.imageUrl) { %>
+              <img class="menu-img" src="<%= item.imageUrl %>" alt="<%= item.name %>" />
+            <% } %>
+            <div class="menu-content">
+              <h2><%= item.name %></h2>
+              <p class="description"><%= item.description %></p>
+              <p class="price">₮<%= item.price.toFixed(2) %></p>
+              <% if (session && session.role === 'student') { %>
+                <form action="/cart/add/<%= item._id %>" method="POST">
+                  <button class="btn-primary" type="submit">Add to Cart</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

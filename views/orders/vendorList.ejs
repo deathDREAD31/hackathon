@@ -1,0 +1,11 @@
+<% /* Vendor’s view of all orders */ %>
+<h1>Vendor Orders</h1>
+<ul>
+  <% orders.forEach(o => { %>
+    <li>
+      Order <%= o._id %> by <%= o.student.name %> 
+      — <%= o.totalQty %> items, <%= o.totalPrice %> TK 
+      (<%= o.status %>)
+    </li>
+  <% }) %>
+</ul>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, <%= user.name %>!</h1>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Role:</strong> <%= user.role %></p>
+
+    <% if (user.role === 'vendor') { %>
+      <a class="action-btn" href="/venodr/items">Manage Menu</a>
+    <% } else { %>
+      <a class="action-btn" href="/menu">Browse Menu</a>
+    <% } %>
+
+    <a class="logout-btn" href="/logout">Logout</a>
+  </div>
+</body>
+</html>

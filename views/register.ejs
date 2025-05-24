@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Register</h1>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/register" method="POST" class="form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">CUET Email</label>
+        <input id="email" name="email" type="email" placeholder="alice@cuet.ac.bd" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="role">I am a...</label>
+        <select id="role" name="role">
+          <option value="student">Student</option>
+          <option value="vendor">Vendor</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+
+    <p class="switch-page">
+      Already have an account? <a href="/login">Login here</a>.
+    </p>
+  </div>
+</body>
+</html>

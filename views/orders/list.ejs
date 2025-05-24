@@ -1,0 +1,15 @@
+<% /* Student order history */ %>
+<h1>My Orders</h1>
+<% if (orders.length === 0) { %>
+  <p>You have no past orders.</p>
+<% } else { %>
+  <ul>
+    <% orders.forEach(o => { %>
+      <li>
+        <strong>Order <a href="/orders/<%= o._id %>/confirm"><%= o._id %></a></strong>
+        — <%= o.totalQty %> items, <%= o.totalPrice %> TK, 
+        Placed on <%= new Date(o.createdAt).toLocaleString('en-GB') %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

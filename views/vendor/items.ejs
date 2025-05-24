@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Menu</title>
+  <link rel="stylesheet" href="/css/vendor-items.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Menu</h1>
+      <a class="btn-add" href="/vendor/items/new">➕ Add New Item</a>
+    </header>
+
+    <% if (items.length === 0) { %>
+      <p class="empty">No items yet. <a href="/vendor/items/new">Add your first item.</a></p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Available</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(item => { %>
+            <tr>
+              <td>
+                <% if (item.imageUrl) { %>
+                  <img src="<%= item.imageUrl %>" alt="<%= item.name %>" class="thumb">
+                <% } else { %>
+                  —
+                <% } %>
+              </td>
+              <td><%= item.name %></td>
+              <td>₮<%= item.price.toFixed(2) %></td>
+              <td><%= item.available ? '✅' : '❌' %></td>
+              <td>
+                <a class="action-btn" href="/vendor/items/<%= item._id %>/edit">Edit</a>
+                <form action="/vendor/items/<%= item._id %>/delete" method="POST" class="inline-form">
+                  <button class="action-btn delete" onclick="return confirm('Delete this item?')">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+
+    <a class="back-link" href="/dashboard">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

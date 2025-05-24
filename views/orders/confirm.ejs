@@ -1,0 +1,11 @@
+<% /* Order confirmation */ %>
+<h1>Thank you! Your order is confirmed.</h1>
+<p>Order ID: <%= order._id %></p>
+<p>Total items: <%= order.totalQty %></p>
+<p>Total price: <%= order.totalPrice %></p>
+<ul>
+  <% order.items.forEach(i => { %>
+    <li><%= i.name %> × <%= i.quantity %> — <%= i.price * i.quantity %></li>
+  <% }) %>
+</ul>
+<p><a href="/orders">See my orders</a></p>
